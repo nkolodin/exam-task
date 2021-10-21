@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.digitallegua.examtask.api.TeacherService;
 import ru.digitallegua.examtask.exception.BadModelException;
@@ -77,4 +78,9 @@ public class TeacherServiceImpl implements TeacherService {
         else if (teacherModel.getLastName() == null)  throw new BadModelException("invalid LastName");
         else if (teacherModel.getMiddleName() == null)  throw new BadModelException("invalid MiddleName");
     }
+
+    /*@Override
+    public TeacherModel loadUserByUsername(String s) throws UsernameNotFoundException {
+        return userAccountRepository.findByLogin(s);
+    }*/
 }
