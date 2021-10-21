@@ -2,6 +2,7 @@ package ru.digitallegua.examtask.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
 @Setter
