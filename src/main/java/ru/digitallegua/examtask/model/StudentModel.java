@@ -1,5 +1,6 @@
 package ru.digitallegua.examtask.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
@@ -7,6 +8,7 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.util.Objects;
 
+@AllArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -27,7 +29,7 @@ public class StudentModel {
     private String middleName;
 
     @Column(name = "course")
-    private String course;
+    private int course;
 
     @Column(name = "speciality")
     private String speciality;

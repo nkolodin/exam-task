@@ -18,7 +18,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 public class ControllerTest {
 
     private final MockMvc mvc;
@@ -35,24 +34,13 @@ public class ControllerTest {
     }
 
     @Test
-    @Order(1)
     @SneakyThrows
     void shouldAcceptNewSocksIncome() throws Exception {
-        mvc.perform(post("/api/")
+        mvc.perform(post("/api/addStudent")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(new StudentModel(1L)))
+                .content(toJson(new StudentModel(1L, "Nikita", "Nikita", "Nikita",1,"nikita")))
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk());
 
-    }
-
-    @Test
-    @SneakyThrows
-    void shouldReturnBadRequestWhenBadSockGiven() {
-        mvc.perform(post("/api")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(new StudentModel(1L, "Nikita", "Nikita", "Nikita")))
-                .characterEncoding("UTF-8"))
-                .andExpect(status().is4xxClientError());
     }
 }
