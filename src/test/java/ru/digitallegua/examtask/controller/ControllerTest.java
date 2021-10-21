@@ -1,4 +1,3 @@
-/*
 package ru.digitallegua.examtask.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,9 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.digitallegua.examtask.model.StudentModel;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -41,15 +38,12 @@ public class ControllerTest {
     @Order(1)
     @SneakyThrows
     void shouldAcceptNewSocksIncome() throws Exception {
-        mvc.perform(post("/api")
+        mvc.perform(post("/api/")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(new StudentModel(1L,"yellow", 40, 5)))
+                .content(toJson(new StudentModel(1L)))
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk());
 
-        mvc.perform(get("/api/socks?color=yellow&operation=equal&cottonPart=40"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Количество носков: 5"));
     }
 
     @Test
@@ -57,8 +51,8 @@ public class ControllerTest {
     void shouldReturnBadRequestWhenBadSockGiven() {
         mvc.perform(post("/api")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(new StudentModel(1L, "yellow", 40, -5)))
+                .content(toJson(new StudentModel(1L, "Nikita", "Nikita", "Nikita")))
                 .characterEncoding("UTF-8"))
                 .andExpect(status().is4xxClientError());
     }
-}*/
+}
