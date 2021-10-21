@@ -6,7 +6,7 @@ public class BadModelException extends RuntimeException {
         super();
     }
 
-    BadModelException(String message){
+    public BadModelException(String message){
         super(message);
     }
 
